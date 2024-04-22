@@ -9,6 +9,10 @@ html {
     background-color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     /* 세리프나 산세리프는 글꼴 범주이므로 따옴표로 묶지 않는다 */
     font-family: 'Source Sans 3', sans-serif;
