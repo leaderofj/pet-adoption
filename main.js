@@ -15,7 +15,7 @@ start()
 //https://learnwebcode.github.io/bootcamp-pet-data/pets.json
 
 async function petsArea() {
-    const petsPromise = await fetch("https://learnwebcode.github.io/bootcamp-pet-data/pets.json")
+    const petsPromise = await fetch("https://gorgeous-crepe-e073a7.netlify.app/.netlify/functions/pets")
     const petsData = await petsPromise.json()
     petsData.forEach(pet => {
         const clone = template.content.cloneNode(true)
@@ -26,7 +26,7 @@ async function petsArea() {
         clone.querySelector(".pet-description").textContent = pet.description
         clone.querySelector(".pet-age").textContent = createAgeText(pet.birthYear)
 
-        if(!pet.photo) pet.photo = "./images/fallback.jpg"
+        if (!pet.photo) pet.photo = "./images/fallback.jpg"
 
         clone.querySelector(".pet-card-photo img").src = pet.photo
         clone.querySelector(".pet-card-photo img").alt = `A ${pet.species} named ${pet.name}`
@@ -42,9 +42,9 @@ function createAgeText(birthYear) {
     const currentYear = new Date().getFullYear()
     const age = currentYear - birthYear
 
-    if(age == 1) return "1 year old"
-    if(age == 0) return "Less than a year old"
-    
+    if (age == 1) return "1 year old"
+    if (age == 0) return "Less than a year old"
+
     return `${age} years old`
 }
 
@@ -54,13 +54,13 @@ allButtons.forEach(el => {
     el.addEventListener("click", handleButtonClick)
 })
 
-function handleButtonClick(e){
+function handleButtonClick(e) {
     // remove active class from any and all buttons
     allButtons.forEach(el => el.classList.remove("active"))
-    
+
     // add active class to the specific button that just got clicked
     e.target.classList.add("active")
-    
+
     // actually filter the pets down below
     const currentFilter = e.target.dataset.filter
     document.querySelectorAll(".pet-card").forEach(card => {
